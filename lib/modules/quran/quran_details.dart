@@ -73,11 +73,11 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) => Text(
-                    content,
+                    "${index + 1} ${allVerses[index]}",
                     style: theme.textTheme.bodySmall,
                     textAlign: TextAlign.center,
                   ),
-                  itemCount: 1,
+                  itemCount: allVerses.length,
                 ),
               )
             ],
