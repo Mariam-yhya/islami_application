@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_application/modules/hadith/hadeth_screen.dart';
 import 'package:islami_application/modules/quran/quran_screen.dart';
 import 'package:islami_application/modules/radio/radio_screen.dart';
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -36,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "إسلامي",
+            local.islami,
           ),
         ),
         body: screens[selectedIndex],
@@ -50,18 +53,18 @@ class _HomePageState extends State<HomePage> {
           items: [
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/moshaf_blue@3x.png")),
-                label: "Quran"),
+                label: local.quran),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/hadith@3x.png")),
-                label: "Hadeth"),
+                label: local.hadeth),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/sebha@3x.png")),
-                label: "Tasbih"),
+                label: local.tasbih),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/radio_blue@3x.png")),
-                label: "Radio"),
+                label: local.radio),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
+                icon: Icon(Icons.settings), label: local.settings),
           ],
         ),
       ),

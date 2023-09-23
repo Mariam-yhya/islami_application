@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_application/core/themes/application_theme.dart';
 import 'package:islami_application/layout/home_layout.dart';
 import 'package:islami_application/modules/hadith/hadith_details.dart';
@@ -16,6 +17,9 @@ class MyApplication extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ApplicationTheme.lightTheme,
       darkTheme: ApplicationTheme.darkTheme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale("en"),
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => SplashScreen(),

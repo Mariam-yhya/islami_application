@@ -5,9 +5,8 @@ class TasbihView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Tasbih View",
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+    return Column(
+      children: [Image.asset("assets/images/sebha.png")],
     );
   }
 }
