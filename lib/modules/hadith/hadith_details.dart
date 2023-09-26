@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_application/core/provider/app_provider.dart';
 import 'package:islami_application/modules/hadith/hadeth_screen.dart';
+import 'package:provider/provider.dart';
 
 class HadithDetailsView extends StatefulWidget {
   HadithDetailsView({super.key});
@@ -19,17 +22,20 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
     var args = ModalRoute.of(context)?.settings.arguments as HadithContent;
-
+    var local = AppLocalizations.of(context)!;
+    var appProvider = Provider.of<AppProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(appProvider.isDark()
+              ? "assets/images/background_dark.png"
+              : "assets/images/background.png"),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "إسلامي",
+            local.islami,
           ),
         ),
         body: Container(
@@ -39,16 +45,15 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
           padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: Color(0xFFF8F8F8).withOpacity(0.8),
+            color: theme.colorScheme.primary.withOpacity(0.8),
           ),
           child: Column(
             children: [
               Text(
-                args.title,
-                style: theme.textTheme.bodyMedium,
-              ),
+                  args.title,
+                  style: theme.textTheme.bodyMedium!
+                      .copyWith(color: theme.colorScheme.onSecondary)),
               Divider(
-                color: theme.primaryColor,
                 indent: 30,
                 endIndent: 30,
                 thickness: 1.2,
@@ -58,7 +63,9 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
                 child: ListView(children: [
                   Text(
                     args.content,
-                    style: theme.textTheme.bodySmall,
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.colorScheme.onSecondary,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ]),

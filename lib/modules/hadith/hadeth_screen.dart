@@ -22,7 +22,6 @@ class _HadithViewState extends State<HadithView> {
       children: [
         Image.asset("assets/images/ahadeth_image.png"),
         Divider(
-          color: theme.primaryColor,
           thickness: 1.5,
           endIndent: 10,
           indent: 10,
@@ -33,7 +32,6 @@ class _HadithViewState extends State<HadithView> {
           style: theme.textTheme.bodyMedium,
         ),
         Divider(
-          color: theme.primaryColor,
           thickness: 1.5,
           endIndent: 10,
           indent: 10,
@@ -55,7 +53,6 @@ class _HadithViewState extends State<HadithView> {
             ),
             itemCount: hadith.length,
             separatorBuilder: (context, index) => Divider(
-              color: theme.primaryColor,
               thickness: 1.5,
               endIndent: 80,
               indent: 80,

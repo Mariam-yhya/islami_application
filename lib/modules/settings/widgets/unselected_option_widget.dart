@@ -7,8 +7,13 @@ class UnSelectedOptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+          color: Colors.white10,
+          borderRadius: BorderRadius.circular(8)),
       child: Text(
         unSelectedTitle,
       ),

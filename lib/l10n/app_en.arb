@@ -4,5 +4,9 @@
     "hadeth" : "Hadeth",
     "tasbih" : "Tasbih",
     "radio" : "Radio",
-    "settings" : "Settings"
+    "settings" : "Settings",
+    "language" : "Language",
+    "themeMode" : "Theme Mode",
+    "dark" : "Dark",
+    "light" : "Light"
 }

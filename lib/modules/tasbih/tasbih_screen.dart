@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami_application/core/provider/app_provider.dart';
 import 'package:islami_application/modules/tasbih/widget/tasbih_item_widget.dart';
+import 'package:provider/provider.dart';
 
 class TasbihView extends StatefulWidget {
   const TasbihView({super.key});
@@ -22,7 +24,7 @@ class _TasbihViewState extends State<TasbihView> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
+    var appProvider = Provider.of<AppProvider>(context);
     return Center(
       child: Column(
         children: [
@@ -34,7 +36,11 @@ class _TasbihViewState extends State<TasbihView> {
             child: Transform.rotate(
               angle: angle,
               child: Image(
-                image: AssetImage("assets/images/body_of_seb7a.png"),
+                image: AssetImage(
+                  appProvider.isDark()
+                      ? "assets/images/sebha_dark.png"
+                      : "assets/images/body_of_seb7a.png",
+                ),
               ),
             ),
           ),
@@ -57,6 +63,7 @@ class _TasbihViewState extends State<TasbihView> {
             height: 81,
             width: 69,
             style: theme.textTheme.bodyLarge,
+            color: theme.primaryColor.withOpacity(0.6),
           ),
           SizedBox(
             height: 20,
@@ -68,11 +75,12 @@ class _TasbihViewState extends State<TasbihView> {
               top: 5,
               bottom: 5,
             ),
+            color: theme.colorScheme.onPrimary,
             title: tasbih[currentIndex],
             height: 51,
             width: 170,
             style: TextStyle(
-              color: Colors.white,
+              color: theme.colorScheme.onBackground,
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),

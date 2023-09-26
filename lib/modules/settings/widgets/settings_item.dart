@@ -36,12 +36,18 @@ class SettingsItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: theme.primaryColor,
+                  color: theme.colorScheme.onSecondary,
                   width: 1.2,
                 )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(optionTitle), Icon(Icons.arrow_drop_down_sharp)],
+              children: [
+                Text(optionTitle),
+                Icon(
+                  Icons.arrow_drop_down_sharp,
+                  color: theme.colorScheme.onSecondary,
+                ),
+              ],
             ),
           ),
         ),
