@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami_application/core/provider/app_provider.dart';
 import 'package:islami_application/modules/settings/widgets/selected_option_widget.dart';
 import 'package:islami_application/modules/settings/widgets/unselected_option_widget.dart';
+import 'package:provider/provider.dart';
 
 class LanguageBottomSheetWidget extends StatelessWidget {
   const LanguageBottomSheetWidget({super.key});
@@ -9,6 +11,7 @@ class LanguageBottomSheetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
+    var appProvider = Provider.of<AppProvider>(context);
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -16,14 +19,24 @@ class LanguageBottomSheetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SelectedOptionWidget(
-            selectedTitle: "English",
+          GestureDetector(
+            onTap: () {
+              appProvider.changeLanguage("en");
+              Navigator.pop(context);
+            },
+            child: appProvider.currentLocal == "en"
+                ? SelectedOptionWidget(selectedTitle: "English")
+                : UnSelectedOptionWidget(unSelectedTitle: "English"),
           ),
-          SizedBox(
-            height: 30,
-          ),
-          UnSelectedOptionWidget(
-            unSelectedTitle: "عربي",
+          SizedBox(height: 30),
+          GestureDetector(
+            onTap: () {
+              appProvider.changeLanguage("ar");
+              Navigator.pop(context);
+            },
+            child: appProvider.currentLocal == "en"
+                ? UnSelectedOptionWidget(unSelectedTitle: "عربي")
+                : SelectedOptionWidget(selectedTitle: "عربي"),
           ),
         ],
       ),

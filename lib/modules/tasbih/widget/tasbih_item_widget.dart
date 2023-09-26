@@ -6,6 +6,7 @@ class TasbihItemWidget extends StatelessWidget {
   final double height;
   final double width;
   final TextStyle? style;
+  final Color color;
 
   const TasbihItemWidget({
     super.key,
@@ -14,6 +15,7 @@ class TasbihItemWidget extends StatelessWidget {
     required this.height,
     required this.width,
     required this.style,
+    required this.color,
   });
 
   @override
@@ -26,7 +28,7 @@ class TasbihItemWidget extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: theme.primaryColor.withOpacity(0.57),
+        color: color,
       ),
       child: Text(
         title,

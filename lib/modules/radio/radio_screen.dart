@@ -26,16 +26,27 @@ class RadioView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.skip_previous_sharp,
-                color: theme.primaryColor, size: 50),
+            Icon(
+              Icons.skip_previous_sharp,
+              color: theme.colorScheme.onPrimary,
+              size: 50,
+            ),
             SizedBox(
               width: 20,
             ),
-            Icon(Icons.play_arrow_rounded, color: theme.primaryColor, size: 80),
+            Icon(
+              Icons.play_arrow_rounded,
+              color: theme.colorScheme.onPrimary,
+              size: 80,
+            ),
             SizedBox(
               width: 20,
             ),
-            Icon(Icons.skip_next_sharp, color: theme.primaryColor, size: 50),
+            Icon(
+              Icons.skip_next_sharp,
+              color: theme.colorScheme.onPrimary,
+              size: 50,
+            ),
           ],
         ),
       ],

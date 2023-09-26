@@ -5,6 +5,9 @@ import 'package:islami_application/modules/quran/quran_screen.dart';
 import 'package:islami_application/modules/radio/radio_screen.dart';
 import 'package:islami_application/modules/settings/settings_screen.dart';
 import 'package:islami_application/modules/tasbih/tasbih_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../core/provider/app_provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = "HomePage";
@@ -29,11 +32,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var local = AppLocalizations.of(context)!;
+    var appProvider = Provider.of<AppProvider>(context);
 
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(
+            appProvider.isDark()
+                ? "assets/images/background_dark.png"
+                : "assets/images/background.png",
+          ),
         ),
       ),
       child: Scaffold(

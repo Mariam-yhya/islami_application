@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_application/core/provider/app_provider.dart';
 import 'package:islami_application/modules/quran/quran_screen.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsView extends StatefulWidget {
   QuranDetailsView({super.key});
@@ -20,19 +23,23 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
+    var local = AppLocalizations.of(context)!;
+    var appProvider = Provider.of<AppProvider>(context);
 
     if (content.isEmpty) readFiles(args.suraNumber);
 
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(appProvider.isDark()
+              ? "assets/images/background_dark.png"
+              : "assets/images/background.png"),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "إسلامي",
+            local.islami,
           ),
         ),
         body: Container(
@@ -42,29 +49,27 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
           padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: Color(0xFFF8F8F8).withOpacity(0.8),
+            color: theme.colorScheme.primary.withOpacity(0.8),
           ),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "سورة ${args.suraName}",
-                    style: theme.textTheme.bodyMedium,
-                  ),
+                  Text("سورة ${args.suraName}",
+                      style: theme.textTheme.bodyMedium!
+                          .copyWith(color: theme.colorScheme.onSecondary)),
                   SizedBox(
                     width: 4,
                   ),
                   Icon(
                     Icons.play_circle,
-                    color: Colors.black,
+                    color: theme.colorScheme.onSecondary,
                     size: 32,
                   )
                 ],
               ),
               Divider(
-                color: theme.primaryColor,
                 indent: 30,
                 endIndent: 30,
                 thickness: 1.2,
@@ -74,7 +79,9 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 child: ListView.builder(
                   itemBuilder: (context, index) => Text(
                     "${index + 1} ${allVerses[index]}",
-                    style: theme.textTheme.bodySmall,
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.colorScheme.onSecondary,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   itemCount: allVerses.length,

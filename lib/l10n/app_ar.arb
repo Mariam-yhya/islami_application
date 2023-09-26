@@ -4,5 +4,9 @@
     "hadeth" : "أحاديث",
     "tasbih" : "تسبيح",
     "radio" : "راديو",
-    "settings" : "الإعدادات"
+    "settings" : "الإعدادات",
+    "language" : "اللغة",
+    "themeMode" : "النمط",
+    "dark" : "ليلي",
+    "light" : "نهاري"
 }
